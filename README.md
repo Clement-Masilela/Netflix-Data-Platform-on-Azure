@@ -71,6 +71,27 @@ Data Sources → ADF Ingestion → Bronze Layer (Raw) → Silver Layer (Cleaned)
 | **Azure Data Lake Storage Gen2** | Scalable data storage |
 
 
+## Azure Resources
+
+### Resource Group
+- **cm_netflix_project**: Container for all project resources
+
+### Storage Account
+- **cmnetflixprojectdl**: Azure Data Lake Storage Gen2 with containers:
+  - `raw`: Staging area for source files
+  - `bronze`: Raw Delta tables with full lineage
+  - `silver`: Cleaned and validated Delta tables
+  - `gold`: Business-ready aggregated tables
+
+### Data Factory
+- **cm-adf-netflixproject**: Orchestration service for data pipelines
+
+### Databricks (Pending)
+- Workspace to be created for transformation processing
+
+**Architecture Pattern**: Medallion (Bronze → Silver → Gold)
+
+For detailed setup instructions, see [docs/setup.md](docs/setup.md)
 
 ## Project Structure
 ```
