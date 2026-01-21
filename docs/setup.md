@@ -7,7 +7,6 @@ This document outlines the Azure resources created for the Netflix Data Platform
 - **Name**: `cm_netflix_project`
 - **Purpose**: Container for all project resources
 - **Region**: South Africa North
----
 
 ## Azure Data Lake Storage Gen2
 
@@ -29,7 +28,6 @@ This document outlines the Azure resources created for the Netflix Data Platform
 - **Raw**: Temporary staging for source files
 - **Bronze/Silver/Gold**: Delta Lake tables with increasing refinement
 
----
 
 ## Azure Data Factory
 
@@ -54,7 +52,6 @@ This document outlines the Azure resources created for the Netflix Data Platform
   - Validation and error handling logic
   - Databricks workflow triggers
 
----
 
 ## Azure Databricks (To Be Created)
 
@@ -66,7 +63,6 @@ This document outlines the Azure resources created for the Netflix Data Platform
 ### Clusters
 - [Details to be added during setup]
 
----
 
 ## Resource Naming Convention
 
@@ -76,7 +72,6 @@ Following Azure best practices:
 - **Project**: `netflixproject`
 - **Pattern**: `{prefix}-{resource-type}-{project-name}`
 
----
 
 ## Next Steps
 
@@ -87,7 +82,6 @@ Following Azure best practices:
 - [ ] Create ADF pipelines
 - [ ] Deploy Databricks notebooks
 
----
 
 ## Access & Security
 
@@ -95,7 +89,6 @@ Following Azure best practices:
 - **Network**: [Public / Private endpoint]
 - **Encryption**: Enabled by default for storage
 
----
 
 ## Cost Considerations
 
@@ -103,6 +96,5 @@ Following Azure best practices:
 - ADF: Charged per activity run and data movement
 - Databricks: Will be charged based on DBU consumption
 
----
 
 *Last Updated: [20/01/2026]*
