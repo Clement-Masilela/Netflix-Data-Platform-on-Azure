@@ -39,10 +39,10 @@ This document outlines the Azure resources created for the Netflix Data Platform
 
 ### Planned Components
 - **Linked Services**: 
-  - HTTP connection to GitHub raw data
-  - Azure Data Lake Storage Gen2 connection
-  - Azure Databricks connection (to be created)
-  
+  -  `github_connection` - HTTP connection to GitHub raw data
+  -  `datalake_connection` - Azure Data Lake Storage Gen2 connection
+  -  Azure Databricks connection (to be created)
+  - 
 - **Datasets**: 
   - Parameterized CSV datasets for source files
   - Delta Lake datasets for Bronze/Silver/Gold layers
