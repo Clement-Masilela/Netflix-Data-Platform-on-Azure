@@ -269,6 +269,7 @@ https://raw.githubusercontent.com/[username]/[repo]/main/data/raw/{file_name}
 
 
 ## Related Documentation
+- [pipeline_creation_walkthrough](../../docs/adt_pipeline_walkthrough.md)
 - [Pipeline Json code](../pipelines/p1_ingestion.json)
 - [Linked Services](../linked_services/README.md)
 - [Datasets Documentation](../datasets/README.md) (to be created)
