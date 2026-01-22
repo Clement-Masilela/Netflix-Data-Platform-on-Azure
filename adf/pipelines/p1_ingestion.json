@@ -1,0 +1,194 @@
+{
+    "name": "p1_ingestion",
+    "properties": {
+        "activities": [
+            {
+                "name": "ForAllTheFiles",
+                "type": "ForEach",
+                "dependsOn": [
+                    {
+                        "activity": "ValidationGithub",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@pipeline().parameters.p_array",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "Copy Github Data",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "DelimitedTextSource",
+                                    "storeSettings": {
+                                        "type": "HttpReadSettings",
+                                        "requestMethod": "GET"
+                                    },
+                                    "formatSettings": {
+                                        "type": "DelimitedTextReadSettings"
+                                    }
+                                },
+                                "sink": {
+                                    "type": "DelimitedTextSink",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSWriteSettings"
+                                    },
+                                    "formatSettings": {
+                                        "type": "DelimitedTextWriteSettings",
+                                        "quoteAllText": true,
+                                        "fileExtension": ".txt"
+                                    }
+                                },
+                                "enableStaging": false,
+                                "translator": {
+                                    "type": "TabularTranslator",
+                                    "typeConversion": true,
+                                    "typeConversionSettings": {
+                                        "allowDataTruncation": true,
+                                        "treatBooleanAsNumber": false
+                                    }
+                                }
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "ds_github",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "file_name": {
+                                            "value": "@item().file_name",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "ds_sink",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "folder_name": {
+                                            "value": "@item().folder_name",
+                                            "type": "Expression"
+                                        },
+                                        "file_name": {
+                                            "value": "@item().file_name",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "ValidationGithub",
+                "type": "Validation",
+                "dependsOn": [
+                    {
+                        "activity": "Set variable1",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "dataset": {
+                        "referenceName": "ds_validation",
+                        "type": "DatasetReference"
+                    },
+                    "timeout": "0.12:00:00",
+                    "sleep": 10
+                }
+            },
+            {
+                "name": "GithubMetaData",
+                "type": "WebActivity",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "method": "GET",
+                    "url": "https://github.com/Clement-Masilela/Netflix-Data-Platform-on-Azure/tree/main/data/raw"
+                }
+            },
+            {
+                "name": "Set variable1",
+                "type": "SetVariable",
+                "dependsOn": [
+                    {
+                        "activity": "GithubMetaData",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "githubmetadata",
+                    "value": {
+                        "value": "@activity('GithubMetaData').output.Response",
+                        "type": "Expression"
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "p_array": {
+                "type": "array",
+                "defaultValue": [
+                    {
+                        "folder_name": "netflix_cast",
+                        "file_name": "netflix_cast.csv"
+                    },
+                    {
+                        "folder_name": "netflix_cast",
+                        "file_name": "netflix_category.csv"
+                    },
+                    {
+                        "folder_name": "netflix_cast",
+                        "file_name": "netflix_countries.csv"
+                    },
+                    {
+                        "folder_name": "netflix_cast",
+                        "file_name": "netflix_directors.csv"
+                    }
+                ]
+            }
+        },
+        "variables": {
+            "githubmetadata": {
+                "type": "String"
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2026-01-21T20:58:11Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
