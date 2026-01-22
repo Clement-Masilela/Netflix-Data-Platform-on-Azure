@@ -4,13 +4,13 @@
 This directory contains the ADF pipeline configurations for the Netflix Data Platform. Pipelines are designed to be dynamic, parameterized, and production-ready with proper validation and error handling.
 
 
-## Pipeline: Master Ingestion Pipeline
+## Pipeline: Ingestion Pipeline
 
 ### Purpose
 Dynamically ingest multiple CSV files from GitHub into the Bronze layer of Azure Data Lake Storage using parameterized datasets and iterative processing.
 
 ### Pipeline Name
-`pl_master_ingestion` (havent named the pipeline, will return to that)
+`pl_ingestion` 
 
 
 ## Architecture
