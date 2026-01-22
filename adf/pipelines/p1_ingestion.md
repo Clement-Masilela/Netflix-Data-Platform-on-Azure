@@ -35,7 +35,7 @@ Validation → Get Metadata → Set Variables → ForEach Loop → Copy Data
        ├── Source: GitHub (ds_github)
        └── Sink: ADLS Bronze (ds_sink)
 ```
-
+![image alt](https://github.com/Clement-Masilela/Netflix-Data-Platform-on-Azure/blob/ac0cdc787471c588adee5a7db5ee1aa9cb038482/adf/pipelines/p1_ingestion_pipeline_canvas.png)
 
 ## Activities Breakdown
 
