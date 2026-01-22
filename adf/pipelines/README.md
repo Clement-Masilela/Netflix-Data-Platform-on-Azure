@@ -4,9 +4,8 @@
 Orchestration and ingestion pipeline definitions for the data platform.
 
 ## Pipelines
-- `master_ingestion_pipeline.json` - Main orchestration pipeline
-- `validate_and_ingest.json` - Data validation and ingestion logic
-- `trigger_databricks_workflows.json` - Databricks job orchestration
+- [p1_ingestion.json](../pipelines/p1_ingestion.json) - Main orchestration pipeline (Complete with validation)
+- `trigger_databricks_workflows.json` - Databricks job orchestration (To be completed)
 
 ## Features
 - **Parameterization**: Dynamic pipeline execution
