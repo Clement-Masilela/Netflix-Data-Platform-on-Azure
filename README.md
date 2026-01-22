@@ -57,7 +57,34 @@ Data Sources → ADF Ingestion → Bronze Layer (Raw) → Silver Layer (Cleaned)
 - Full data lineage tracking
 - ACID compliance for reliable transactions
 
+---
 
+## Pipeline Implementation
+
+### Ingestion Pipeline
+A production-grade, dynamic ingestion pipeline that demonstrates enterprise best practices:
+
+**Key Capabilities**:
+-  **Parameterized Design**: Single pipeline handles 5+ CSV files dynamically
+-  **Pre-Flight Validation**: Validates source data existence before processing
+-  **Metadata Collection**: Captures file information for audit trails
+-  **Iterative Processing**: ForEach loop enables scalable file handling
+-  **Dynamic Datasets**: Source and sink paths constructed at runtime
+-  **Error Prevention**: Fail-fast validation prevents wasted compute
+
+**Pipeline Flow**:
+```
+GitHub Validation → Metadata Retrieval → ForEach Loop → Copy to Bronze
+```
+
+**Files Processed**:
+- netflix_titles.csv → Bronze/titles
+- netflix_directors.csv → Bronze/directors
+- netflix_countries.csv → Bronze/countries
+- netflix_category.csv → Bronze/categories
+- netflix_cast.csv → Bronze/cast
+
+For detailed pipeline documentation, see [adf/pipelines/README.md](adf/pipelines/README.md)
 
 ## Technologies Used
 
