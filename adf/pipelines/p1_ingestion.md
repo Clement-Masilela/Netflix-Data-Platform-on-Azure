@@ -221,12 +221,12 @@ https://raw.githubusercontent.com/[username]/[repo]/main/data/raw/{file_name}
 ## Testing Results
 
 ### Initial Test Run
-✅ **Status**: Succeeded  
-✅ **Files Processed**: 5 CSV files  
-✅ **Validation**: Passed  
-✅ **Metadata Retrieval**: Successful  
-✅ **ForEach Loop**: All iterations completed  
-✅ **Data Copied**: All files landed in Bronze layer  
+ **Status**: Succeeded  
+ **Files Processed**: 5 CSV files  
+ **Validation**: Passed  
+ **Metadata Retrieval**: Successful  
+ **ForEach Loop**: All iterations completed  
+ **Data Copied**: All files landed in Bronze layer  
 
 **Execution Time**: 94 seconds
 
