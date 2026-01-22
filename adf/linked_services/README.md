@@ -32,6 +32,7 @@ I am using these to connect to the raw data in github and connection to datalake
 - Delta Lake datasets for all medallion layers
 - Parameterized paths for dynamic table access
 
+![image alt](https://github.com/Clement-Masilela/Netflix-Data-Platform-on-Azure/blob/6cbadac84bcd8aef97c2239d97895df45c450299/adf/linked_services/datalake_connection.png)
 
 ## Connection Architecture
 ```
